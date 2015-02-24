@@ -1,5 +1,5 @@
-size(500,300);
-background(255);
+size(500,350);
+background(0);
 strokeWeight(0.5);
 smooth();
 
@@ -25,6 +25,7 @@ for (int i=0;i<100;i++){
     x = centX + (thisRadius * cos(rad));
     y = centY + (thisRadius * sin(rad));
     if (lastx > -999){
+      stroke(#6D00F0);
       line(x,y,lastx,lasty);
     }
     lastx = x;
