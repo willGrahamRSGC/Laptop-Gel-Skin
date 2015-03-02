@@ -1,4 +1,4 @@
-size(500,350);
+  size(500,350);
 background(0);
 strokeWeight(0.5);
 smooth();
@@ -32,4 +32,3 @@ for (int i=0;i<100;i++){
     lasty = y;
   }
 }
-
