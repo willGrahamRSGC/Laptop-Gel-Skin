@@ -1,9 +1,13 @@
 int a = -730;
 int priora = -730;
 int c = -730;
+int priorc = -730;
 int e = -730;
+int priore = -730;
 float f = 0;
+float priorf = 0;
 float d = 0;
+float priord = 0;
 float b = 0;
 float priorb = 0;
 float x, y;
@@ -52,19 +56,23 @@ void draw() {
   b = 0.0023 * (a * a);
   b = b+(height/8)*cos(radians((a-180)/.5));
   stroke(255);
-  line(a-15, b, a+15, b);
+  line(a-20, b, a+20, b);
   line(priora, priorb, a, b);
   // increment horizontal position
+  priorc = c;
   c=c+3;
+  priord = d;
   d = 0.0025 * (c * c);
   d = d + (height/7)*sin(radians((a-200)/.5));
   stroke(#25CE1D);
-  line(c, d-5, c, d+5);
+  line(c, d, c, d);
   translate(0, height/1);
   scale(1, -1);
+  priore = e;
   e=c+4;
+  priorf = f;
   f = 0.002 * (e * e);
-  f = f +(height/8)*cos(radians((a-180)/.5));
   stroke(#07E8E6);
-  line(e+13, f, e, f-13);
+  line(priore, priorf, e, f);
+    f = f +(height/8)*cos(radians((a-180)/.5));
 }
