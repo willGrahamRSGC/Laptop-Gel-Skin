@@ -1,14 +1,16 @@
-int a = -730;
-int priora = -730;
-int c = -730;
-int priorc = -730; // priors make the lines creat fluently rather than just in dots
-int e = -730; // a, c and e are examples of the x intercepts
-int priore = -730;
+int a = -500;
+int priora = -530;
+/*
+int c = -530;
+int priorc = -530; // priors make the lines creat fluently rather than just in dots
+int e = -530; // a, c and e are examples of the x intercepts
+int priore = -530;
 float f = 0;
 float priorf = 0;
 float d = 0;
 float priord = 0;
-float b = 0; // b, d and f are examples of the y intercepts
+*/
+float b = 575; // b, d and f are examples of the y intercepts
 float priorb = 0; //priors make the lines creat fluently rather than just in dots
 float x, y;
 float z = 0.0;
@@ -47,38 +49,36 @@ void setup() {
   }
 }
 void draw() {
-  background(204);
-  z = z + .01;
-  float n = noise(z) * width;
-  line(n,0,n, height);
+
   translate(width/2, height/1); 
   scale(1, -1);
   // increment horizontal position
-  priora = a;
-  a = a+3;
-  priorb = b;
-  //b = 0.0023 * (a * a);
+  priora = a; // draw line between points of line to creat fluent line
+  a = a+3; // increases x to move line
+  priorb = b; // draw line between points of line to creat fluent line
   b = 0.0023 * (a * a);
-  b = b+(height/8)*cos(radians((a-180)/.5));
-  stroke(255);
-  line(a-20, b, a+20, b);
+  b = b+(height/8)*cos(radians((a-180)/.5)); // creates sine wave 
+  stroke(255); // colouring of line
+  line(a-20, b, a+20, b); // the white line the +20 and -20 are to make the step like pattern
   line(priora, priorb, a, b);
   // increment horizontal position
-  priorc = c;
-  c=c+3;
-  priord = d;
+  /*
+  priorc = c; // draw line between points of line to creat fluent line
+  c=c+3; // increases x to move line
+  priord = d; // draw line between points of line to creat fluent line
   d = 0.0025 * (c * c);
-  //d = d + (height/8)*sin(radians((a-200)/.5));  //  
   stroke(#25CE1D);
   line(priorc, priord, c, d);
   d = d + (height/8)*sin(radians((a-200)/.5)); //creates green sine 
   translate(0, height/1);
   scale(1, -1);
-  priore = e;
-  e=e+4;
-  priorf = f;
-  f = 0.002 * (e * e);
-  stroke(#07E8E6);
+  
+  priore = e; // draw line between points of line to creat fluent line
+  e=e+4; // increases x to move line
+  priorf = f; // draw line between points of line to creat fluent line
+  f = 0.002 * (e * e); // creates differnce and slope of parabla
+  stroke(#07E8E6); // colour of parabla
   line(priore, priorf, e, f);
-   f = f +(height/8)*cos(radians((a-180)/.5)); //cosine of the teal line
+  f = f +(height/8)*cos(radians((a-180)/.5)); //cosine of the teal line
+  */
 }
