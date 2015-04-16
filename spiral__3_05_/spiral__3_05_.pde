@@ -1,18 +1,24 @@
 
 int whiteX = -730;
 int priorWhiteX = -730;
+int whiteX2 = -730;
+int priorWhiteX2 = -730;
 float f = 0;
 float priorf = 0; 
 int e = -730; // a, c and e are examples of the x intercepts
 int priore = -730;
-// priors make the lines creat fluently rather than just in dots
+// priors make the lines create fluently rather than just in dots
 /*
 int c = -530;
  int priorc = -530; 
  float d = 0;
  float priord = 0;
  */
-
+// higher pararbola
+float[] whiteY2 = new float [15];// controls amount of lines created from whiteY2
+float[] priorWhiteY2 = new float [15];//priors make the lines create fluently rather than just in dots
+float[] whiteA2 = new float [15]; // creates many a values
+// lower parabola
 float[] whiteY = new float [15]; // controls amount of lines created from whiteY
 float[] priorWhiteY = new float [15]; //priors make the lines create fluently rather than just in dots
 float[] whiteA = new float [15]; // creates many a values
@@ -105,20 +111,19 @@ void setup() {
       lasty = circleY;
     }
   }
-  
-  int counter = 1;
-  whiteY[0] = 750;
-  while (counter < whiteY.length) {
-    whiteY[counter] = whiteY[counter-1] + 15;
-    counter = counter +1;
-  }
 
   //set stretch factor
   int whiteCounter = 1;
-  whiteA[0] = 0.0005;
+  whiteA[0] = 0.0000;
   while (whiteCounter < whiteA.length) {
-    whiteA[whiteCounter] = whiteA[whiteCounter-1] +0.0002;
+    whiteA[whiteCounter] = whiteA[whiteCounter-1] +0.0001;
     whiteCounter = whiteCounter + 1;
+  }
+  int whiteCounter2 = 1;
+  whiteA2[0] = 0.002;
+    while (whiteCounter2 < whiteA2.length) {
+    whiteA2[whiteCounter2] = whiteA2[whiteCounter2-1] +0.0001;//length between each wave
+    whiteCounter2 = whiteCounter2 + 1;
   }
 }
 
@@ -130,7 +135,7 @@ void draw() {
   // increment horizontal position
   priorWhiteX = whiteX; // draw line between points of line to creat fluent line
   whiteX = whiteX+3; // increases x to move line
-strokeWeight(1);
+  strokeWeight(1);
 
   priorWhiteY[0] = whiteY[0]; // draw line between points of line to creat fluent line
   whiteY[0] = whiteA[0] * (whiteX * whiteX); // quadratic equation
@@ -178,13 +183,33 @@ strokeWeight(1);
 
   stroke(255); // colouring of line
 
-  //draws my parablas
+  //draws my parabolas
   int counter = 0;
   while (counter < 11) {
     line(whiteX, whiteY[counter], whiteX, whiteY[counter]); // the white line the +20 and -20 are to make the step like pattern
     line(priorWhiteX-15, priorWhiteY[counter], whiteX+15, whiteY[counter]);
     println(whiteX);
     counter = counter + 1;
+  }
+  
+  
+  // higher parabola
+  translate(0, 0);
+  // increment horizontal position
+  priorWhiteX2 = whiteX2; // draw line between points of line to creat fluent line
+  whiteX2 = whiteX2+3; // increases x to move line
+  strokeWeight(1);
+  
+priorWhiteY2[0] = whiteY2[0]; // draw line between points of line to creat fluent line
+  whiteY2[0] = whiteA2[0] * (whiteX2 * whiteX2); // quadratic equation
+  whiteY2[0] = whiteY2[0]+(height/8)*cos(radians((whiteX2-180)/.5)); // creates sine wave
+  
+int counter2 = 0;
+  while (counter2 < 11) {
+    line(whiteX2, whiteY2[counter2], whiteX2, whiteY2[counter2]); // the white line the +20 and -20 are to make the step like pattern
+    line(priorWhiteX2-15, priorWhiteY2[counter2], whiteX2+15, whiteY2[counter2]);
+    println(whiteX2);
+    counter2 = counter2 + 1;
   }
   // increment horizontal position
   /*
@@ -196,7 +221,8 @@ strokeWeight(1);
    line(priorc, priord, c, d);
    d = d + (height/8)*sin(radians((a-200)/.5)); //creates green sine 
    */
-  translate(0, height/1);
+/*
+  translate(width*0, height/1);
   scale(1, -1);
   priore = e; // draw line between points of line to creat fluent line
   e=e+4; // increases x to move line
@@ -205,4 +231,5 @@ strokeWeight(1);
   stroke(0); // colour of parabla
   line(priore, priorf, e, f);
   f = f +(height/8)*cos(radians((whiteX-180)/.5)); //cosine of the teal line
+  */
 }
