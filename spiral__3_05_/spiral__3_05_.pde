@@ -146,49 +146,13 @@ void draw() {
   pushMatrix();
   scale(1, 1);
   translate(0, -700); //placement of higher parabola
-  priorWhiteY[0] = whiteY[0]; // draw line between points of line to creat fluent line
-  whiteY[0] = whiteA[0] * (whiteX * whiteX); // quadratic equation
-  whiteY[0] = whiteY[0]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[1] = whiteY[1]; // draw line between points of line to creat fluent line
-  whiteY[1] = whiteA[1] * (whiteX * whiteX); // quadratic equation
-  whiteY[1] = whiteY[1]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[2] = whiteY[2]; // draw line between points of line to creat fluent line
-  whiteY[2] = whiteA[2] * (whiteX * whiteX); // quadratic equation
-  whiteY[2] = whiteY[2]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[3] = whiteY[3]; // draw line between points of line to creat fluent line
-  whiteY[3] = whiteA[3] * (whiteX * whiteX); // quadratic equation
-  whiteY[3] = whiteY[3]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[4] = whiteY[4]; // draw line between points of line to creat fluent line
-  whiteY[4] = whiteA[4] * (whiteX * whiteX); // quadratic equation
-  whiteY[4] = whiteY[4]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[5] = whiteY[5]; // draw line between points of line to creat fluent line
-  whiteY[5] = whiteA[5] * (whiteX * whiteX); // quadratic equation
-  whiteY[5] = whiteY[5]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[6] = whiteY[6]; // draw line between points of line to creat fluent line
-  whiteY[6] = whiteA[6] * (whiteX * whiteX); // quadratic equation
-  whiteY[6] = whiteY[6]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[7] = whiteY[7]; // draw line between points of line to creat fluent line
-  whiteY[7] = whiteA[7] * (whiteX * whiteX); // quadratic equation
-  whiteY[7] = whiteY[7]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[8] = whiteY[8]; // draw line between points of line to creat fluent line
-  whiteY[8] = whiteA[8] * (whiteX * whiteX); // quadratic equation
-  whiteY[8] = whiteY[8]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[9] = whiteY[9]; // draw line between points of line to creat fluent line
-  whiteY[9] = whiteA[9] * (whiteX * whiteX); // quadratic equation
-  whiteY[9] = whiteY[9]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-
-  priorWhiteY[10] = whiteY[10]; // draw line between points of line to creat fluent line
-  whiteY[10] = whiteA[10] * (whiteX * whiteX); // quadratic equation
-  whiteY[10] = whiteY[10]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
+  int increase = 0;
+  while (increase<11) {
+    priorWhiteY[increase] = whiteY[increase]; // draw line between points of line to creat fluent line
+    whiteY[increase] = whiteA[increase] * (whiteX * whiteX); // quadratic equation
+    whiteY[increase] = whiteY[increase]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
+    increase = increase +1;
+  }
   stroke(#FFF700);
 
   //draws lines
@@ -200,7 +164,6 @@ void draw() {
     counter = counter + 1;
   }
   popMatrix();
-
 
 
   //switch's grid around to draw below
