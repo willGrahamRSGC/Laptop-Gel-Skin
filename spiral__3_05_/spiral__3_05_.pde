@@ -129,7 +129,7 @@ void setup() {
 
   //set stretch factor
   int whiteCounter = 1;
-  whiteA[0] = 0.00001;
+  whiteA[0] = 0.000001;
   while (whiteCounter < whiteA.length) {
     whiteA[whiteCounter] = whiteA[whiteCounter-1] +0.0001;
     whiteCounter = whiteCounter + 1;
@@ -138,6 +138,7 @@ void setup() {
 
 
 void draw() {
+  // food for thought: figure out a way to not use popmatrix hint use 22 array instead of 11
 
   translate(width/2, height/1); 
   priorWhiteX = whiteX; // draw line between points of line to creat fluent line
@@ -145,41 +146,39 @@ void draw() {
   strokeWeight(1);
   pushMatrix();
   scale(1, 1);
-  translate(0, -700); //placement of higher parabola
-  int increase = 0;
-  while (increase<11) {
-    priorWhiteY[increase] = whiteY[increase]; // draw line between points of line to creat fluent line
-    whiteY[increase] = whiteA[increase] * (whiteX * whiteX); // quadratic equation
-    whiteY[increase] = whiteY[increase]+(height/8)*cos(radians((whiteX-180)/c)); // creates sine wave 
-    increase = increase +1;
-  }
-  stroke(#FFF700);
-
-  //draws lines
+  translate(0, -660); //placement of higher parabola
   int counter = 0;
-  while (counter < 11) {
-    line(whiteX, whiteY[counter], whiteX, whiteY[counter]); // the white line the +20 and -20 are to make the step like pattern
+  while (counter<11) {
+    //calculates the positions of the lines
+    priorWhiteY[counter] = whiteY[counter]; // draw line between points of line to creat fluent line
+    whiteY[counter] = whiteA[counter] * (whiteX * whiteX); // quadratic equation
+    whiteY[counter] = whiteY[counter]+(height/8)*cos(radians((whiteX-212)/c)); // creates sine wave 
+    //draws line of code
+    line(whiteX, whiteY[counter], whiteX, whiteY[counter]); // draws line 
     line(priorWhiteX, priorWhiteY[counter], whiteX, whiteY[counter]);
     println(whiteX);
-    counter = counter + 1;
+    counter = counter +1;
   }
+  // colour of line
+  stroke(#FFF700);
+
+  //switches grid around
   popMatrix();
+
 
 
   //switch's grid around to draw below
   pushMatrix();
   scale(1, -1);
   // increment horizontal position
-
   strokeWeight(1);
   translate(0, 88);
-
   stroke(#FFF700); // colouring of line
   //draws my parabolas
   counter = 0;
   while (counter < 11) {
     line(whiteX, whiteY[counter], whiteX, whiteY[counter]); // the white line the +20 and -20 are to make the step like pattern
-    line(priorWhiteX-1, priorWhiteY[counter], whiteX+1, whiteY[counter]);
+    line(priorWhiteX, priorWhiteY[counter], whiteX, whiteY[counter]);
     println(whiteX);
     counter = counter + 1;
   }
